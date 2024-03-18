@@ -22,7 +22,7 @@ canvas {
 	touch-action: none;
 }
 
-.scrim-max-width {
+.screen-max-width {
 	position: relative;
 	max-width: 1120px;
 	margin-inline-start: auto;
