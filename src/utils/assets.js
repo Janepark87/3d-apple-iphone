@@ -1,4 +1,3 @@
-import hero from '/assets/images/hero.jpeg';
 import apple from '/assets/images/apple.svg';
 import search from '/assets/images/search.svg';
 import bag from '/assets/images/bag.svg';
@@ -8,6 +7,7 @@ import replay from '/assets/images/replay.svg';
 import play from '/assets/images/play.svg';
 import pause from '/assets/images/pause.svg';
 
+import hero from '/assets/images/hero.jpeg';
 import yellow from '/assets/images/yellow.jpg';
 import blue from '/assets/images/blue.jpg';
 import white from '/assets/images/white.jpg';
@@ -26,16 +26,16 @@ import highlightFourthmv from '/assets/videos/hightlight-fourth.mp4';
 import exploremv from '/assets/videos/explore.mp4';
 import framemv from '/assets/videos/frame.mp4';
 
-export const heroImg = hero;
-export const appleImg = apple;
-export const searchImg = search;
-export const bagImg = bag;
-export const watchImg = watch;
-export const rightImg = right;
-export const replayImg = replay;
-export const playImg = play;
-export const pauseImg = pause;
+export const appleIcon = apple;
+export const searchIcon = search;
+export const bagIcon = bag;
+export const watchIcon = watch;
+export const rightIcon = right;
+export const replayIcon = replay;
+export const playIcon = play;
+export const pauseIcon = pause;
 
+export const heroImg = hero;
 export const yellowImg = yellow;
 export const blueImg = blue;
 export const whiteImg = white;

@@ -59,7 +59,7 @@ canvas {
 	}
 
 	.section-heading {
-		@apply text-gray mb-5 translate-y-20 text-3xl font-medium opacity-0 md:text-5xl lg:mb-0 lg:text-6xl;
+		@apply text-gray mb-5 translate-y-20 text-3xl font-medium opacity-0 md:mb-0 md:text-5xl lg:text-6xl;
 	}
 
 	.feature-text {
