@@ -1,5 +1,5 @@
 import { hightlightsSlides } from '../../data/constants';
-import Video from './Video';
+import VideoPlayer from './VideoPlayer';
 import VideoButtonControls from './VideoButtonControls';
 import VideoProgressBar from './VideoProgressBar';
 import VideoContent from './VideoContent';
@@ -12,7 +12,7 @@ export default function VideoCarousel() {
 					<div id="slider" key={slide.id} className="pr-10 sm:pr-20">
 						<div className="video-carousel_container">
 							<div className="flex-center h-full w-full overflow-hidden rounded-3xl bg-black">
-								<Video slide={slide} i={i} />
+								<VideoPlayer slide={slide} i={i} />
 							</div>
 
 							<VideoContent slide={slide} />

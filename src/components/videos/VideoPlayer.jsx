@@ -6,7 +6,7 @@ import { useVideo } from '../../contexts/VideoContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Video({ slide, i }) {
+export default function VideoPlayer({ slide, i }) {
 	const {
 		video: { isEnd, videoId, isPlaying, startPlay },
 		videoRef,
