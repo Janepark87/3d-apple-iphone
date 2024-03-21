@@ -1,11 +1,12 @@
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { heroVideo, smallHeroVideo } from '../utils/assets';
-import useResponsiveContent from '../hooks/useResponsiveContent';
+import useBreakpoint from '../hooks/useBreakpoint';
 
 export default function Hero() {
-	const { content: videoSrc } = useResponsiveContent({
+	const { content: videoSrc } = useBreakpoint({
 		mobile: smallHeroVideo,
+		tablet: heroVideo,
 		desktop: heroVideo,
 	});
 

@@ -1,7 +1,8 @@
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { watchIcon, rightIcon } from '../utils/assets.js';
 import { ScrollTrigger } from 'gsap/all';
+import { watchIcon, rightIcon } from '../utils/assets.js';
+import VideoCarousel from './videos/VideoCarousel.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,6 +60,8 @@ export default function Highlights() {
 						</p>
 					</div>
 				</div>
+
+				<VideoCarousel />
 			</div>
 		</section>
 	);
