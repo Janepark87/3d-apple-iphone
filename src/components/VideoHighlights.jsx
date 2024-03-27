@@ -6,7 +6,7 @@ import VideoCarousel from './videos/VideoCarousel.jsx';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Highlights() {
+export default function VideoHighlights() {
 	useGSAP(() => {
 		gsap.to('#title', {
 			opacity: 1,
@@ -37,9 +37,9 @@ export default function Highlights() {
 		>
 			<div className="screen-max-width">
 				<div className="mb-12 w-full items-end justify-between md:flex">
-					<h1 id="title" className="section-heading mb-0">
+					<h2 id="title" className="section-heading mb-0">
 						Get the highlights.
-					</h1>
+					</h2>
 
 					<div className="flex flex-wrap items-end gap-5">
 						<p className="link">

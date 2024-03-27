@@ -1,7 +1,9 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Highlights from './components/Highlights';
 import { VideoContextProvider } from './contexts/VideoContext';
+import { IphoneContextProvider } from './contexts/IphoneContext';
+import VideoHighlights from './components/VideoHighlights';
+import IphoneModel from './components/IphoneModel';
 
 export default function App() {
 	return (
@@ -10,8 +12,12 @@ export default function App() {
 			<Hero />
 
 			<VideoContextProvider>
-				<Highlights />
+				<VideoHighlights />
 			</VideoContextProvider>
+
+			<IphoneContextProvider>
+				<IphoneModel />
+			</IphoneContextProvider>
 		</main>
 	);
 }

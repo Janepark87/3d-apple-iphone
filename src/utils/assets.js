@@ -26,6 +26,8 @@ import highlightFourthmv from '/assets/videos/hightlight-fourth.mp4';
 import exploremv from '/assets/videos/explore.mp4';
 import framemv from '/assets/videos/frame.mp4';
 
+import iphone3d from '/models/iphone.glb';
+
 export const appleIcon = apple;
 export const searchIcon = search;
 export const bagIcon = bag;
@@ -53,3 +55,5 @@ export const highlightThirdVideo = highlightThirdmv;
 export const highlightFourthVideo = highlightFourthmv;
 export const exploreVideo = exploremv;
 export const frameVideo = framemv;
+
+export const iphone = iphone3d;
