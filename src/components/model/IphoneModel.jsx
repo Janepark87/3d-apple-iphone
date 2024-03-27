@@ -1,10 +1,11 @@
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/all';
-import { useIphone } from '../contexts/IphoneContext';
-import IphoneCanvas from './model/IphoneCanvas';
-import IphoneColors from './model/IphoneColors';
-import IphoneSizes from './model/IphoneSizes';
+import { useIphone } from '../../contexts/IphoneContext';
+import IphoneCanvas from './IphoneCanvas';
+import IphoneColors from './IphoneColors';
+import IphoneSizes from './IphoneSizes';
+import { animateTitleWithScroll } from '../../utils/animations';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,15 +13,7 @@ export default function IphoneModel() {
 	const { model } = useIphone();
 
 	useGSAP(() => {
-		gsap.to('#heading', {
-			opacity: 1,
-			y: 0,
-			duration: 1,
-			scrollTrigger: {
-				trigger: '#heading',
-				toggleActions: 'restart none none reverse',
-			},
-		});
+		animateTitleWithScroll('#heading');
 	}, []);
 
 	return (

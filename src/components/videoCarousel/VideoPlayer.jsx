@@ -29,6 +29,7 @@ export default function VideoPlayer({ slide, i }) {
 		gsap.to('#video', {
 			scrollTrigger: {
 				trigger: '#video',
+				start: 'top center',
 				toggleActions: 'restart none none none',
 			},
 			onComplete: () => {
