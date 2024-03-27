@@ -25,10 +25,23 @@ export function animateTitleWithScroll(target, animationProps) {
 		y: 0,
 		opacity: 1,
 		duration: 1,
+		ease: 'power2',
 		...animationProps,
 		scrollTrigger: {
 			trigger: target,
 			toggleActions: 'restart none none reverse',
+		},
+	});
+}
+
+export function animateWithScroll(target, animationProps, scrollProps) {
+	gsap.to(target, {
+		...animationProps,
+		scrollTrigger: {
+			trigger: target,
+			start: 'top 85%',
+			toggleActions: 'restart reverse restart reverse',
+			...scrollProps,
 		},
 	});
 }

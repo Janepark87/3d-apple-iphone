@@ -1,11 +1,7 @@
-import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/all';
 import { watchIcon, rightIcon } from '../../utils/assets.js';
-import VideoCarousel from './VideoCarousel.jsx';
 import { animateTitleWithScroll } from '../../utils/animations.js';
-
-gsap.registerPlugin(ScrollTrigger);
+import VideoCarousel from './VideoCarousel.jsx';
 
 export default function VideoHighlights() {
 	useGSAP(() => {

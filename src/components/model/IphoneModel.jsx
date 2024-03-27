@@ -1,13 +1,9 @@
-import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/all';
 import { useIphone } from '../../contexts/IphoneContext';
+import { animateTitleWithScroll } from '../../utils/animations';
 import IphoneCanvas from './IphoneCanvas';
 import IphoneColors from './IphoneColors';
 import IphoneSizes from './IphoneSizes';
-import { animateTitleWithScroll } from '../../utils/animations';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function IphoneModel() {
 	const { model } = useIphone();
