@@ -1,26 +1,35 @@
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
 import { VideoContextProvider } from './contexts/VideoContext';
 import { IphoneContextProvider } from './contexts/IphoneContext';
+import Header from './components/Header';
+import Hero from './components/Hero';
 import VideoHighlights from './components/videoCarousel/VideoHighlights';
 import IphoneModel from './components/model/IphoneModel';
 import VideoFeatures from './components/videoFeatures/VideoFeatures';
+import ProChip from './components/proChip/ProChip';
+import Footer from './components/Footer';
 
 export default function App() {
 	return (
-		<main className="bg-black">
-			<Navbar />
-			<Hero />
+		<>
+			<Header />
 
-			<VideoContextProvider>
-				<VideoHighlights />
-			</VideoContextProvider>
+			<main className="bg-black">
+				<Hero />
 
-			<IphoneContextProvider>
-				<IphoneModel />
-			</IphoneContextProvider>
+				<VideoContextProvider>
+					<VideoHighlights />
+				</VideoContextProvider>
 
-			<VideoFeatures />
-		</main>
+				<IphoneContextProvider>
+					<IphoneModel />
+				</IphoneContextProvider>
+
+				<VideoFeatures />
+
+				<ProChip />
+			</main>
+
+			<Footer />
+		</>
 	);
 }
