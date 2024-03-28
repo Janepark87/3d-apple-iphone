@@ -15,15 +15,12 @@ export default function VideoPlayer({ slide, i }) {
 		handleProcess,
 		handleLoadedMetadata,
 		LAST_VIDEO_INDEX,
+		animateSlider,
 	} = useVideo();
 
 	useGSAP(() => {
 		// move the slider to display the next video.
-		gsap.to('#slider', {
-			transform: `translateX(${-100 * videoId}%)`,
-			duration: 2,
-			ease: 'power2.inOut',
-		});
+		animateSlider(videoId);
 
 		// video animation to play the video when it is in the viewport
 		gsap.to('#video', {

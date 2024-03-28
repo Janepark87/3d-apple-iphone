@@ -29,6 +29,7 @@ export function animateTitleWithScroll(target, animationProps) {
 		...animationProps,
 		scrollTrigger: {
 			trigger: target,
+			start: 'top 90%',
 			toggleActions: 'restart none none reverse',
 		},
 	});

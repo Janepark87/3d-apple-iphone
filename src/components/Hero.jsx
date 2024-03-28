@@ -11,14 +11,21 @@ export default function Hero() {
 	});
 
 	useGSAP(() => {
-		gsap.to('#hero', { opacity: 1, y: 0, delay: 2, duration: 1 });
-		gsap.to('#cta', { opacity: 1, y: -50, delay: 2, duration: 1 });
+		gsap.to('#hero', { opacity: 1, delay: 2 });
+		gsap.to('#cta-btn', { opacity: 1, y: -20, delay: 2, duration: 0.5 });
+		gsap.to('#cta-price', {
+			opacity: 1,
+			y: -15,
+			stagger: 0.5,
+			delay: 2.15,
+			duration: 0.8,
+		});
 	}, []);
 
 	return (
 		<section className="nav-height relative w-full bg-black">
 			<div className="flex-center h-5/6 w-full flex-col">
-				<h1 id="hero" className="hero-title -translate-y-20">
+				<h1 id="hero" className="hero-title">
 					iPhone 15 Pro
 				</h1>
 				<div className="w-9/12 md:w-10/12">
@@ -34,14 +41,16 @@ export default function Hero() {
 				</div>
 			</div>
 
-			<div
-				id="cta"
-				className="flex translate-y-20 flex-col items-center opacity-0"
-			>
-				<a href="#hightlights" className="btn">
+			<div className="flex flex-col items-center">
+				<a id="cta-btn" href="#hightlights" className="btn opacity-0">
 					Buy
 				</a>
-				<p className="text-xl font-normal">From $199/ month or $999</p>
+				<p
+					id="cta-price"
+					className="translate-y-10 text-xl font-normal opacity-0"
+				>
+					From $199/ month or $999
+				</p>
 			</div>
 		</section>
 	);

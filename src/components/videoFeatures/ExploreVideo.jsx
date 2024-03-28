@@ -33,7 +33,6 @@ export default function ExploreVideo() {
 				preload="none"
 				playsInline
 				muted
-				loop
 			>
 				<source src={exploreVideo} type="video/mp4" />
 			</video>

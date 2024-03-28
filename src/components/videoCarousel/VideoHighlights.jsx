@@ -9,7 +9,7 @@ export default function VideoHighlights() {
 		animateTitleWithScroll('.link', {
 			duration: 0.8,
 			stagger: 0.15,
-			delay: 0.15,
+			delay: 0.5,
 		});
 	}, []);
 

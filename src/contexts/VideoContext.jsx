@@ -1,8 +1,11 @@
 import { useRef, useState, createContext, useContext } from 'react';
+import gsap from 'gsap';
+import useBreakpoint from '../hooks/useBreakpoint';
 
 const VideoContext = createContext();
 
 export function VideoContextProvider({ children }) {
+	const { isMobile, isTablet } = useBreakpoint({});
 	const videoRef = useRef([]);
 	const indicatorRef = useRef([]);
 	const progressRef = useRef([]);
@@ -18,6 +21,66 @@ export function VideoContextProvider({ children }) {
 
 	const handleLoadedMetadata = (i, e) =>
 		setLoadedData((prev) => [...prev, e]);
+
+	const animateSlider = (videoId) => {
+		gsap.to('#slider', {
+			transform: `translateX(${-100 * videoId}%)`,
+			duration: 2,
+			ease: 'power2.inOut',
+		});
+	};
+
+	const animateProgressBar = (videoId, isPlaying) => {
+		let currentProgress = 0;
+		const videoEl = videoRef.current[videoId];
+		const dotContainer = indicatorRef.current;
+		const dot = progressRef.current;
+
+		if (dot[videoId]) {
+			// animate the progress of the video
+			let anim = gsap.to(dot[videoId], {
+				onUpdate: () => {
+					const progress = Math.ceil(anim.progress() * 100);
+
+					if (progress !== currentProgress) {
+						currentProgress = progress;
+
+						// update the progress bar
+						gsap.to(dotContainer[videoId], {
+							width: isMobile
+								? '10vw'
+								: isTablet
+									? '10vw'
+									: '4vw',
+						});
+						gsap.to(dot[videoId], {
+							width: `${currentProgress}%`,
+							backgroundColor: 'white',
+						});
+					}
+				},
+				onComplete: () => {
+					// reset the progress bar
+					gsap.to(dotContainer[videoId], {
+						width: '12px',
+					});
+					gsap.to(dot[videoId], {
+						backgroundColor: '#afafaf',
+					});
+				},
+			});
+
+			if (videoId === 0) anim.restart();
+
+			// Update progress bar according to video playback time
+			const animUpdatedProgress = () => {
+				anim.progress(videoEl.currentTime / videoEl.duration);
+			};
+
+			if (isPlaying) gsap.ticker.add(animUpdatedProgress);
+			else gsap.ticker.remove(animUpdatedProgress);
+		}
+	};
 
 	const handleProcess = (type, i) => {
 		switch (type) {
@@ -51,6 +114,8 @@ export function VideoContextProvider({ children }) {
 				handleLoadedMetadata,
 				handleProcess,
 				LAST_VIDEO_INDEX,
+				animateSlider,
+				animateProgressBar,
 			}}
 		>
 			{children}
