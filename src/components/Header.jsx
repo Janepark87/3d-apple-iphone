@@ -1,7 +1,7 @@
 import { appleIcon, searchIcon, bagIcon } from '../utils/assets';
 import { navLists } from '../data/constants';
 
-export default function Navbar() {
+export default function Header() {
 	return (
 		<header className="flex w-full items-center justify-between px-5 py-5 sm:px-10">
 			<nav className="screen-max-width flex w-full">

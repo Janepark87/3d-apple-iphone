@@ -15,7 +15,7 @@ export default function ExploreText() {
 						the first iphone to feature an aerospace-grade titanium
 						design
 					</span>
-					using the same alloy that spacerafts use for missions to
+					, using the same alloy that spacerafts use for missions to
 					Mars.
 				</p>
 			</div>

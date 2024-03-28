@@ -9,7 +9,8 @@
 }
 
 body {
-	width: 100dvw;
+	/* width: 100dvw; */
+	width: 100%;
 	height: 100%;
 	color: white;
 	background: #000;
@@ -90,27 +91,27 @@ canvas {
 		@apply text-center text-2xl font-semibold text-gray-100 opacity-0 max-md:mb-10;
 	}
 
-	.hiw-title {
+	.chip-title {
 		@apply text-center text-4xl font-semibold md:text-7xl;
 	}
 
-	.hiw-subtitle {
+	.chip-subtitle {
 		@apply text-gray py-10 text-center text-xl font-semibold md:text-2xl;
 	}
 
-	.hiw-video {
+	.chip-video {
 		@apply absolute h-[90%] w-[95%] overflow-hidden rounded-[56px];
 	}
 
-	.hiw-text-container {
+	.chip-text-container {
 		@apply flex flex-col items-start justify-between gap-24 md:flex-row;
 	}
 
-	.hiw-text {
+	.chip-text {
 		@apply text-gray text-xl font-normal md:font-semibold;
 	}
 
-	.hiw-bigtext {
+	.chip-bigtext {
 		@apply my-2 text-3xl font-normal text-white md:text-5xl md:font-semibold;
 	}
 
