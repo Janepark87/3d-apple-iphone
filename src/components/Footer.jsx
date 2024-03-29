@@ -26,8 +26,7 @@ export default function Footer() {
 
 				<div className="flex flex-col justify-between gap-1 md:flex-row md:items-center">
 					<p className="text-gray text-xs font-semibold">
-						Copyright @ {new Date().getFullYear()} Apple Inc. All
-						rights reserved.
+						{new Date().getFullYear()}
 					</p>
 
 					<ul className="leading-none">
