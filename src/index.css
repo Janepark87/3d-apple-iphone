@@ -18,6 +18,15 @@ body {
 	overflow-x: hidden;
 }
 
+canvas {
+	touch-action: none;
+}
+
+#root {
+	touch-action: auto !important;
+	overflow-x: hidden !important;
+}
+
 .screen-max-width {
 	position: relative;
 	max-width: 1120px;
@@ -95,7 +104,7 @@ body {
 	}
 
 	.chip-video {
-		@apply absolute h-[90%] w-[95%] overflow-hidden rounded-[56px];
+		@apply absolute h-[90%] w-[95%] overflow-hidden rounded-[15px];
 	}
 
 	.chip-text-container {
