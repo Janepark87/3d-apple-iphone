@@ -15,7 +15,7 @@ export default function VideoHighlights() {
 
 	return (
 		<section
-			id="highlights"
+			id="hightlights"
 			className="common-padding bg-zinc h-full w-screen overflow-hidden"
 		>
 			<div className="screen-max-width">
