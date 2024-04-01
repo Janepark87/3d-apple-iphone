@@ -33,7 +33,7 @@ export default function Hero() {
 						className="pointer-events-none"
 						autoPlay
 						muted
-						playsInline={true}
+						playsInline
 						key={videoSrc}
 					>
 						<source src={videoSrc} type="video/mp4" />
@@ -41,7 +41,7 @@ export default function Hero() {
 				</div>
 			</div>
 
-			<div className="flex flex-col items-center">
+			<div className="flex -translate-y-10 flex-col items-center">
 				<a id="cta-btn" href="#hightlights" className="btn opacity-0">
 					Buy
 				</a>

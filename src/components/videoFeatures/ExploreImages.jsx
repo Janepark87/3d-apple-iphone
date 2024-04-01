@@ -19,7 +19,7 @@ export default function ExploreImages() {
 		<div className="feature-video-container">
 			<div className="h-[50vh] flex-1 overflow-hidden">
 				<img
-					className="feature-video g_img_grow"
+					className="feature-video g_img_grow pointer-events-none"
 					src={explore1Img}
 					alt="Titanium"
 				/>
@@ -27,7 +27,7 @@ export default function ExploreImages() {
 
 			<div className="h-[50vh] flex-1 overflow-hidden">
 				<img
-					className="feature-video g_img_grow"
+					className="feature-video g_img_grow pointer-events-none"
 					src={explore2Img}
 					alt="Titanium 2"
 				/>

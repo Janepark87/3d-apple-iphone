@@ -23,7 +23,7 @@ export default function IphoneFrame() {
 				<div className="overflow-hidden">
 					<img
 						src={frameImg}
-						className="relative z-10 bg-transparent"
+						className="pointer-events-none relative z-10 bg-transparent"
 						alt="iPhone frame"
 					/>
 				</div>
@@ -40,7 +40,7 @@ export default function IphoneFrame() {
 				</div>
 			</div>
 
-			<p className="text-gray mt-3 text-center font-semibold">
+			<p className="mt-3 text-center font-semibold text-gray">
 				Honkai: Star Rail
 			</p>
 		</div>
