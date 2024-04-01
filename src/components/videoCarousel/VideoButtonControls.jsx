@@ -18,8 +18,8 @@ export default function VideoButtonControls() {
 					isLastVideo
 						? () => handleProcess('video-reset')
 						: !isPlaying
-							? () => handleProcess('play')
-							: () => handleProcess('pause')
+							? () => handleProcess('play-btn')
+							: () => handleProcess('pause-btn')
 				}
 			/>
 		</button>

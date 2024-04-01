@@ -2,17 +2,10 @@ import { useEffect } from 'react';
 import { useVideo } from '../../contexts/VideoContext';
 
 export default function VideoProgressBar() {
-	const {
-		videoRef,
-		indicatorRef,
-		progressRef,
-		video: { videoId, isPlaying },
-		animateProgressBar,
-	} = useVideo();
+	const { videoRef, indicatorRef, progressRef, animateProgressBar } =
+		useVideo();
 
-	useEffect(() => {
-		animateProgressBar(videoId, isPlaying);
-	}, [animateProgressBar, videoId, isPlaying]);
+	useEffect(() => animateProgressBar(), [animateProgressBar]);
 
 	return (
 		<ul className="flex-center rounded-full bg-gray-300 px-7 py-5 backdrop-blur">

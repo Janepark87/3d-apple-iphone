@@ -1,6 +1,9 @@
 import { useRef, useState, createContext, useContext } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 import useBreakpoint from '../hooks/useBreakpoint';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const VideoContext = createContext();
 
@@ -9,7 +12,6 @@ export function VideoContextProvider({ children }) {
 	const videoRef = useRef([]);
 	const indicatorRef = useRef([]);
 	const progressRef = useRef([]);
-	const LAST_VIDEO_INDEX = videoRef.current.length - 1;
 	const [loadedData, setLoadedData] = useState([]);
 	const [video, setVideo] = useState({
 		videoId: 0,
@@ -18,20 +20,34 @@ export function VideoContextProvider({ children }) {
 		isEnd: false,
 		isLastVideo: false,
 	});
+	const LAST_VIDEO_INDEX = loadedData.length - 1;
 
 	const handleLoadedMetadata = (i, e) =>
 		setLoadedData((prev) => [...prev, e]);
 
 	const animateSlider = (videoId) => {
+		// move the slider to display the next video.
 		gsap.to('#slider', {
 			transform: `translateX(${-100 * videoId}%)`,
 			duration: 2,
 			ease: 'power2.inOut',
 		});
 	};
+	const startVideoInViewport = (element) => {
+		// video animation to play the video when it is in the viewport
+		gsap.to(element, {
+			scrollTrigger: {
+				trigger: element,
+				start: 'top center',
+				toggleActions: 'restart none none none',
+			},
+			onComplete: () => handleProcess('video-start-to-play'),
+		});
+	};
 
-	const animateProgressBar = (videoId, isPlaying) => {
+	const animateProgressBar = () => {
 		let currentProgress = 0;
+		const { videoId, isPlaying } = video;
 		const videoEl = videoRef.current[videoId];
 		const dotContainer = indicatorRef.current;
 		const dot = progressRef.current;
@@ -60,13 +76,15 @@ export function VideoContextProvider({ children }) {
 					}
 				},
 				onComplete: () => {
-					// reset the progress bar
-					gsap.to(dotContainer[videoId], {
-						width: '12px',
-					});
-					gsap.to(dot[videoId], {
-						backgroundColor: '#afafaf',
-					});
+					if (isPlaying) {
+						// reset the progress bar
+						gsap.to(dotContainer[videoId], {
+							width: '12px',
+						});
+						gsap.to(dot[videoId], {
+							backgroundColor: '#afafaf',
+						});
+					}
 				},
 			});
 
@@ -84,6 +102,16 @@ export function VideoContextProvider({ children }) {
 
 	const handleProcess = (type, i) => {
 		switch (type) {
+			case 'video-start-to-play':
+				setVideo((pre) => ({
+					...pre,
+					startPlay: true,
+					isPlaying: true,
+				}));
+				break;
+			case 'video-playing':
+				setVideo((pre) => ({ ...pre, isPlaying: true }));
+				break;
 			case 'video-end':
 				setVideo((pre) => ({ ...pre, isEnd: true, videoId: i + 1 }));
 				break;
@@ -93,8 +121,8 @@ export function VideoContextProvider({ children }) {
 			case 'video-reset':
 				setVideo((pre) => ({ ...pre, isLastVideo: false, videoId: 0 }));
 				break;
-			case 'play':
-			case 'pause':
+			case 'play-btn':
+			case 'pause-btn':
 				setVideo((pre) => ({ ...pre, isPlaying: !pre.isPlaying }));
 				break;
 			default:
@@ -110,11 +138,12 @@ export function VideoContextProvider({ children }) {
 				progressRef,
 				loadedData,
 				video,
+				LAST_VIDEO_INDEX,
 				setVideo,
 				handleLoadedMetadata,
 				handleProcess,
-				LAST_VIDEO_INDEX,
 				animateSlider,
+				startVideoInViewport,
 				animateProgressBar,
 			}}
 		>

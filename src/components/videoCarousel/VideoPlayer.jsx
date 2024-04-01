@@ -1,43 +1,23 @@
 import { useEffect } from 'react';
-import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/all';
 import { useVideo } from '../../contexts/VideoContext';
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function VideoPlayer({ slide, i }) {
 	const {
-		video: { isEnd, videoId, isPlaying, startPlay },
+		video: { videoId, isPlaying, startPlay },
 		videoRef,
 		loadedData,
-		setVideo,
 		handleProcess,
 		handleLoadedMetadata,
 		LAST_VIDEO_INDEX,
 		animateSlider,
+		startVideoInViewport,
 	} = useVideo();
 
 	useGSAP(() => {
-		// move the slider to display the next video.
+		startVideoInViewport('#video');
 		animateSlider(videoId);
-
-		// video animation to play the video when it is in the viewport
-		gsap.to('#video', {
-			scrollTrigger: {
-				trigger: '#video',
-				start: 'top center',
-				toggleActions: 'restart none none none',
-			},
-			onComplete: () => {
-				setVideo((pre) => ({
-					...pre,
-					startPlay: true,
-					isPlaying: true,
-				}));
-			},
-		});
-	}, [isEnd, videoId]);
+	}, [videoId]);
 
 	useEffect(() => {
 		if (loadedData.length > LAST_VIDEO_INDEX) {
@@ -54,12 +34,7 @@ export default function VideoPlayer({ slide, i }) {
 			preload="auto"
 			muted
 			ref={(el) => (videoRef.current[i] = el)}
-			onPlay={() => {
-				setVideo((prev) => ({
-					...prev,
-					isPlaying: true,
-				}));
-			}}
+			onPlay={() => handleProcess('video-playing')}
 			onEnded={() => {
 				i !== LAST_VIDEO_INDEX
 					? handleProcess('video-end', i)
