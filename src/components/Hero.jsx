@@ -42,7 +42,15 @@ export default function Hero() {
 			</div>
 
 			<div className="flex -translate-y-10 flex-col items-center">
-				<a id="cta-btn" href="#hightlights" className="btn opacity-0">
+				<a
+					id="cta-btn"
+					href="#"
+					className="btn opacity-0"
+					onClick={(e) => {
+						e.preventDefault();
+						document.querySelector('#hightlights').scrollIntoView();
+					}}
+				>
 					Buy
 				</a>
 				<p
